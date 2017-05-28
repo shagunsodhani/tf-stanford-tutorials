@@ -3,13 +3,13 @@ Simple linear regression example in TensorFlow
 This program tries to predict the number of thefts from 
 the number of fire in the city of Chicago
 """
+from __future__ import print_function
 
 import numpy as np
-import matplotlib.pyplot as plt
 import tensorflow as tf
 import xlrd
 
-DATA_FILE = 'data/fire_theft.xls'
+DATA_FILE = '../data/fire_theft.xls'
 
 # Phase 1: Assemble the graph
 # Step 1: read in data from the .xls file
@@ -34,24 +34,24 @@ n_samples = sheet.nrows - 1
 
 # Step 6: using gradient descent with learning rate of 0.01 to minimize loss
 optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.001).minimize(loss)
- 
+
 # Phase 2: Train our model
 with tf.Session() as sess:
-	# Step 7: initialize the necessary variables, in this case, w and b
-	# TO - DO	
+    # Step 7: initialize the necessary variables, in this case, w and b
+    # TO - DO
 
-	# Step 8: train the model
-	for i in range(100): # run 100 epochs
-		total_loss = 0
-		for x, y in data:
-			# Session runs optimizer to minimize loss and fetch the value of loss
-			# TO DO: write sess.run()
-			total_loss += l
-		print "Epoch {0}: {1}".format(i, total_loss/n_samples)
-	
-# plot the results
-# X, Y = data.T[0], data.T[1]
-# plt.plot(X, Y, 'bo', label='Real data')
-# plt.plot(X, X * w + b, 'r', label='Predicted data')
-# plt.legend()
-# plt.show()
+    # Step 8: train the model
+    for i in range(100):  # run 100 epochs
+        total_loss = 0
+        for x, y in data:
+            # Session runs optimizer to minimize loss and fetch the value of loss
+            # TO DO: write sess.run()
+            total_loss += l
+        print("Epoch {0}: {1}".format(i, total_loss / n_samples))
+
+        # plot the results
+        # X, Y = data.T[0], data.T[1]
+        # plt.plot(X, Y, 'bo', label='Real data')
+        # plt.plot(X, X * w + b, 'r', label='Predicted data')
+        # plt.legend()
+        # plt.show()
